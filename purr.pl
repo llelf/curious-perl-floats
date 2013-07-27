@@ -4,6 +4,8 @@ use Modern::Perl;
 sub aparse {
     my ($x) = @_;
 
+    $x =~ /(inf) | (nan)/ix and return 'not now';
+
     $x =~ /(?<neg> -)? 0x
            (?<signif0> [0-9a-f]) (?: \. (?<signif> [0-9a-f]+))?
            p (?<exps> [+-])? (?<exp> [0-9]+)/x
